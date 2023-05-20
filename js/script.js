@@ -11,6 +11,7 @@ const choices = document.querySelectorAll(".choice"),
 // Play game
 function play() {
   restart.style.display = "inline-block";
+  const computerChoice = getComputerChoice();
 }
 
 // GetComputerChoice
@@ -26,7 +27,29 @@ function getComputerChoice() {
 }
 
 // GetWinner
-function getWinner() {}
+function getWinner(p, c) {
+  if (p === c) {
+    return "draw";
+  } else if (p === "rock") {
+    if (c === "paper") {
+      return "computer";
+    } else {
+      return "player";
+    }
+  } else if (p === "paper") {
+    if (c === "scissors") {
+      return "computer";
+    } else {
+      return "player";
+    }
+  } else if (p === "scissors") {
+    if (c === "rock") {
+      return "computer";
+    } else {
+      return "player";
+    }
+  }
+}
 
 // ShowWinner
 function showWinner() {}
