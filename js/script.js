@@ -6,6 +6,7 @@ const choices = document.querySelectorAll(".choice"),
   scoreBoard = {
     player: 0,
     computer: 0,
+    draw: 0,
   };
 
 // Play game
@@ -52,7 +53,40 @@ function getWinner(p, c) {
 }
 
 // ShowWinner
-function showWinner() {}
+function showWinner(winner, computerChoice) {
+  if (winner === "player") {
+    scoreBoard.player++;
+    result.innerHTML = `
+    <h1 class="text-win">You win</h1>
+    <i class="fas fa-hand-${computerChoice} fa-10x"></i>
+    <p>Computer Chose <string>${
+      computerChoice.charAt(0).toUpperCase() + computerChoice.slice(1)
+    }</string></p>
+    `;
+  } else if (winner === "computer") {
+    scoreBoard.computer++;
+    result.innerHTML = `
+    <h1 class="text-lose">You lose</h1>
+    <i class="fas fa-hand-${computerChoice} fa-10x"></i>
+    <p>Computer Chose <string>${
+      computerChoice.charAt(0).toUpperCase() + computerChoice.slice(1)
+    }</string></p>
+    `;
+  } else {
+    restart.innerHTML = `
+    <h1>It's A Draw</h1>
+    <i class="fas fa-hand-${computerChoice} fa-10x"></i>
+    <p>Computer Chose <string>${
+      computerChoice.charAt(0).toUpperCase() + computerChoice.slice(1)
+    }</string></p>
+    `;
+  }
+  score.innerHTML = `
+  <p> Player: ${scoreBoard.player}</p>
+  <p> Computer: ${scoreBoard.computer}</p>
+  `;
+  modal.style.display = "block";
+}
 
 // RestartGame
 function restartGame() {}
